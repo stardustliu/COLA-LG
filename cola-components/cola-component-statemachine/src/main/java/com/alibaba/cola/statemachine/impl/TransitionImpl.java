@@ -7,7 +7,7 @@ import com.alibaba.cola.statemachine.Transition;
 
 /**
  * TransitionImpl。
- *
+ *  状态流转逻辑实现，是无状态的不可变对象，线程安全
  * This should be designed to be immutable, so that there is no thread-safe risk
  *
  * @author Frank Zhang
@@ -82,6 +82,14 @@ public class TransitionImpl<S,E,C> implements Transition<S,E,C> {
         this.action = action;
     }
 
+    /**
+     *  1. 如果是InternalTransition，则状态不发生变化。
+     *  2. 如果符合Condition，则执行后续Action
+     *  3. 如果不符合Condition，则状态不变
+     * @param ctx
+     * @param checkCondition
+     * @return
+     */
     @Override
     public State<S, E, C> transit(C ctx, boolean checkCondition) {
         Debugger.debug("Do transition: "+this);

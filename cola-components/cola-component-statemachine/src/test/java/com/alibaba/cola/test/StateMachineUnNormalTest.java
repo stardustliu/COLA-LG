@@ -9,8 +9,6 @@ import com.alibaba.cola.statemachine.impl.StateMachineException;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static com.alibaba.cola.test.StateMachineTest.MACHINE_ID;
-
 /**
  * StateMachineUnNormalTest
  *

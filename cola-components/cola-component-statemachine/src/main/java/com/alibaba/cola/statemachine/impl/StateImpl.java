@@ -9,7 +9,8 @@ import java.util.List;
 
 /**
  * StateImpl
- *
+ *   状态变化由事件触发；
+ *   InternalTransition不会引起状态变化
  * @author Frank Zhang
  * @date 2020-02-07 11:19 PM
  */
@@ -21,6 +22,14 @@ public class StateImpl<S,E,C> implements State<S,E,C> {
         this.stateId = stateId;
     }
 
+    /**
+     * 创建并添加Transition，跟event绑定；状态机中由event触发Transition
+     * 将Transition加入到Transitions中，保证不重复
+     * @param event the event of the Transition
+     * @param target the target of the transition
+     * @param transitionType
+     * @return
+     */
     @Override
     public Transition<S, E, C> addTransition(E event, State<S,E,C> target, TransitionType transitionType) {
         Transition<S, E, C> newTransition = new TransitionImpl<>();

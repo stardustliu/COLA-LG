@@ -23,16 +23,28 @@ public class StateMachineBuilderImpl<S, E, C> implements StateMachineBuilder<S, 
     private final Map<S, State< S, E, C>> stateMap = new ConcurrentHashMap<>();
     private final StateMachineImpl<S, E, C> stateMachine = new StateMachineImpl<>(stateMap);
 
+    /**
+     * fluent interface的起点之一
+     * @return
+     */
     @Override
     public ExternalTransitionBuilder<S, E, C> externalTransition() {
         return new TransitionBuilderImpl<>(stateMap, TransitionType.EXTERNAL);
     }
 
+    /**
+     * fluent interfase的起点之一
+     * @return
+     */
     @Override
     public ExternalTransitionsBuilder<S, E, C> externalTransitions() {
         return new TransitionsBuilderImpl<>(stateMap, TransitionType.EXTERNAL);
     }
 
+    /**
+     * fluent interface的起点之一
+     * @return
+     */
     @Override
     public InternalTransitionBuilder<S, E, C> internalTransition() {
         return new TransitionBuilderImpl<>(stateMap, TransitionType.INTERNAL);

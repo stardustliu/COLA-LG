@@ -21,6 +21,11 @@ public class EventTransitions<S,E,C> {
         eventTransitions = new HashMap<>();
     }
 
+    /**
+     * 维护 Event --> List<Transition> 的映射关系map
+     * @param event
+     * @param transition
+     */
     public void put(E event, Transition<S, E, C> transition){
         if(eventTransitions.get(event) == null){
             List<Transition<S,E,C>> transitions = new ArrayList<>();

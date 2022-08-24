@@ -14,6 +14,13 @@ import java.util.concurrent.ConcurrentHashMap;
 public class StateMachineFactory {
     static Map<String /* machineId */, StateMachine> stateMachineMap = new ConcurrentHashMap<>();
 
+    /**
+     * 缓存StateMachine
+     * @param stateMachine
+     * @param <S>
+     * @param <E>
+     * @param <C>
+     */
     public static <S, E, C> void register(StateMachine<S, E, C> stateMachine){
         String machineId = stateMachine.getMachineId();
         if(stateMachineMap.get(machineId) != null){

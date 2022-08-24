@@ -30,6 +30,13 @@ public class StateMachineImpl<S, E, C> implements StateMachine<S, E, C> {
         this.stateMap = stateMap;
     }
 
+    /**
+     * 使用状态机的核心入口。入参当前状态、事件、上下文
+     * @param sourceStateId
+     * @param event the event to send
+     * @param ctx the user defined context
+     * @return
+     */
     @Override
     public S fireEvent(S sourceStateId, E event, C ctx) {
         isReady();
@@ -39,10 +46,18 @@ public class StateMachineImpl<S, E, C> implements StateMachine<S, E, C> {
             Debugger.debug("There is no Transition for " + event);
             return sourceStateId;
         }
-
+        //获取到Transition后，执行流转
         return transition.transit(ctx, false).getId();
     }
 
+    /**
+     * 根据当前状态、事件以及条件信息，获取对应的Transition
+     * 要判断流转条件是否符合
+     * @param sourceStateId
+     * @param event
+     * @param ctx
+     * @return
+     */
     private Transition<S, E, C> routeTransition(S sourceStateId, E event, C ctx) {
         State sourceState = getState(sourceStateId);
 

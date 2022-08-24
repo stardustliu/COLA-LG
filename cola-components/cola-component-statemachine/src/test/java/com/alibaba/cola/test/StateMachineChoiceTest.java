@@ -75,7 +75,8 @@ public class StateMachineChoiceTest {
     }
 
     private Action<StateMachineTest.States, StateMachineTest.Events, Context> doAction() {
-        return (from, to, event, ctx)->{
+        //单方法接口Lamda方式实现匿名对象
+        return (from, to, event, ctx)-> {
             System.out.println("from:"+from+" to:"+to+" on:"+event+" condition:" + ctx.getCondition());
         };
     }

@@ -2,7 +2,7 @@ package com.alibaba.cola.statemachine;
 
 /**
  * StateContext
- *
+ *  这个类的作用是啥？ 没有具体的实现
  * @author Frank Zhang
  * @date 2020-02-07 2:49 PM
  */

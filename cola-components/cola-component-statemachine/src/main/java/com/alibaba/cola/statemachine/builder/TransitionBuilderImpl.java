@@ -56,6 +56,11 @@ class TransitionBuilderImpl<S,E,C> implements ExternalTransitionBuilder<S,E,C>, 
         return this;
     }
 
+    /**
+     * 在此方法中示例化了Transition， 所以On要在when和perform之前执行
+     * @param event transition event
+     * @return
+     */
     @Override
     public On<S, E, C> on(E event) {
         transition = source.addTransition(event, target, transitionType);
